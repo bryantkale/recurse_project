@@ -1,0 +1,38 @@
+{
+  "name": "recurse_project",
+  "version": "1.0.0",
+  "description": "My tic tac toe game!",
+  "homepage": "https://github.com/bryantkale/recurse_project#readme",
+  "bugs": {
+    "url": "https://github.com/bryantkale/recurse_project/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bryantkale/recurse_project.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack serve --mode development"
+  },
+  "dependencies": {
+    "motion": "^13.3.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^8.0.5",
+    "@babel/preset-env": "^8.0.5",
+    "@babel/preset-react": "^8.0.1",
+    "babel-loader": "^10.1.1",
+    "css-loader": "^7.1.5",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.111.0",
+    "webpack-cli": "^7.2.3",
+    "webpack-dev-server": "^6.0.0"
+  },
+  "keywords": []
+}
