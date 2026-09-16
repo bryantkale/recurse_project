@@ -19,9 +19,8 @@ body {
     justify-content: center;
     font-family: Avenir, "Avenir Next", "Trebuchet MS", sans-serif;
     background:
-        radial-gradient(circle at top left, rgba(156, 218, 139, 0.45), transparent 32%),
-        radial-gradient(circle at bottom right, rgba(195, 75, 108, 0.35), transparent 28%),
-        linear-gradient(160deg, var(--plum) 0%, var(--berry) 52%, var(--rose) 100%);
+        var(--plum);
+
     color: var(--paper);
 }
 

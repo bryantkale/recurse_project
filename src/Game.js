@@ -7,7 +7,7 @@ const EMOJI_OPTIONS = ['🐻', '🐰', '🐱', '🦕', '🦀', '🦄', '🐶'];
 const ITEMS_OPTIONS = ['💎', '💰', '🔑', '🌭', '🏆', '🐟'];
 
 /**
- *  TODO:
+ *  maybe TODO:
  * 3x4 boards that are all playable. Once a player wins a game, they get an item
  * Give players their own list of items.
  * which boards are active and which players won which boards
@@ -113,14 +113,6 @@ export default function Game() {
                 </button>
             </div>
             <div className="game-board">
-                <Board
-                    playerOneIsNext={playerOneIsNext}
-                    squares={currentSquares}
-                    onPlay={handlePlay}
-                    playerOneEmoji={playerOneEmoji}
-                    playerTwoEmoji={playerTwoEmoji}
-                />
-                {/* multiple boards can be rendered here if needed */}
                 <Board
                     playerOneIsNext={playerOneIsNext}
                     squares={currentSquares}
