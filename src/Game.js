@@ -13,27 +13,20 @@ const ITEMS_OPTIONS = ['💎', '💰', '🔑', '🌭', '🏆', '🐟'];
  * which boards are active and which players won which boards
  */
 export default function Game() {
-    const [history, setHistory] = useState(INITIAL_HISTORY);
-    const [currentMove, setCurrentMove] = useState(0);
+    const [board, setBoard] = useState(Array(9).fill(null));
     const [playerOneEmoji, setPlayerOneEmoji] = useState('🍅');
     const [playerTwoEmoji, setPlayerTwoEmoji] = useState('🍌');
-    // Adding player items state for both players
-    const [playerOneItems, setPlayerOneItems] = useState([]);
-    const [playerTwoItems, setPlayerTwoItems] = useState([]);
     const [hasStarted, setHasStarted] = useState(false);
-
-    const playerOneIsNext = currentMove % 2 === 0;
-    const currentSquares = history[currentMove];
+    const [playerOneIsNext, setPlayerOneIsNext] = useState(true);
 
     function handlePlay(nextSquares) {
-        const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
-        setHistory(nextHistory);
-        setCurrentMove(nextHistory.length - 1);
+        setBoard(nextSquares);
+        setPlayerOneIsNext((previous) => !previous);
     }
 
     function handleRestart() {
-        setHistory(INITIAL_HISTORY);
-        setCurrentMove(0);
+        setBoard(Array(9).fill(null));
+        setPlayerOneIsNext(true);
     }
 
     function handleStartGame() {
@@ -101,7 +94,6 @@ export default function Game() {
         );
     }
 
-
     return (
         <div className="game">
             <div className="game-shell">
@@ -115,7 +107,7 @@ export default function Game() {
             <div className="game-board">
                 <Board
                     playerOneIsNext={playerOneIsNext}
-                    squares={currentSquares}
+                    squares={board}
                     onPlay={handlePlay}
                     playerOneEmoji={playerOneEmoji}
                     playerTwoEmoji={playerTwoEmoji}
