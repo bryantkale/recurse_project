@@ -2,15 +2,27 @@ import { useState } from 'react';
 import Board from './Board';
 
 const INITIAL_HISTORY = [Array(9).fill(null)];
-const EMOJI_OPTIONS = ['🍅', '🍌', '🍇', '🍓', '🍑', '🍒', '🥝', '🍍'];
+const EMOJI_OPTIONS = ['🐻', '🐰', '🐱', '🦕', '🦀', '🦄', '🐶'];
+// players can win these items during the game
+const ITEMS_OPTIONS = ['💎', '💰', '🔑', '🌭', '🏆', '🐟'];
 
+/**
+ *  TODO:
+ * 3x4 boards that are all playable. Once a player wins a game, they get an item
+ * Give players their own list of items.
+ * which boards are active and which players won which boards
+ */
 export default function Game() {
     const [history, setHistory] = useState(INITIAL_HISTORY);
     const [currentMove, setCurrentMove] = useState(0);
     const [playerOneEmoji, setPlayerOneEmoji] = useState('🍅');
     const [playerTwoEmoji, setPlayerTwoEmoji] = useState('🍌');
+    // Adding player items state for both players
+    const [playerOneItems, setPlayerOneItems] = useState([]);
+    const [playerTwoItems, setPlayerTwoItems] = useState([]);
     const [hasStarted, setHasStarted] = useState(false);
-    const xIsNext = currentMove % 2 === 0;
+
+    const playerOneIsNext = currentMove % 2 === 0;
     const currentSquares = history[currentMove];
 
     function handlePlay(nextSquares) {
@@ -89,6 +101,7 @@ export default function Game() {
         );
     }
 
+
     return (
         <div className="game">
             <div className="game-shell">
@@ -101,7 +114,15 @@ export default function Game() {
             </div>
             <div className="game-board">
                 <Board
-                    xIsNext={xIsNext}
+                    playerOneIsNext={playerOneIsNext}
+                    squares={currentSquares}
+                    onPlay={handlePlay}
+                    playerOneEmoji={playerOneEmoji}
+                    playerTwoEmoji={playerTwoEmoji}
+                />
+                {/* multiple boards can be rendered here if needed */}
+                <Board
+                    playerOneIsNext={playerOneIsNext}
                     squares={currentSquares}
                     onPlay={handlePlay}
                     playerOneEmoji={playerOneEmoji}

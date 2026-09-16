@@ -1,21 +1,31 @@
 import Square from './Square';
 import calculateWinner from './calculateWinner';
 
-export default function Board({ xIsNext, squares, onPlay, playerOneEmoji, playerTwoEmoji }) {
+export default function Board({
+    playerOneIsNext,
+    squares,
+    onPlay,
+    playerOneEmoji,
+    playerTwoEmoji
+}) {
     function handleClick(i) {
         if (calculateWinner(squares) || squares[i]) {
             return;
         }
 
         const nextSquares = squares.slice();
-        nextSquares[i] = xIsNext ? playerOneEmoji : playerTwoEmoji;
+        nextSquares[i] = playerOneIsNext
+            ? playerOneEmoji
+            : playerTwoEmoji;
         onPlay(nextSquares);
     }
 
     const winner = calculateWinner(squares);
     const status = winner
         ? `Winner: ${winner}`
-        : `Next player: ${xIsNext ? playerOneEmoji : playerTwoEmoji}`;
+        : `Next player: ${playerOneIsNext
+            ? playerOneEmoji
+            : playerTwoEmoji}`;
 
     return (
         <>
